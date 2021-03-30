@@ -1,5 +1,5 @@
+using API.Core.DbModels;
 using API.Data.DataContext;
-using API.Data.DbModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
