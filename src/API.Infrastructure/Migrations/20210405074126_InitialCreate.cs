@@ -7,7 +7,7 @@ namespace API.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ProductBrand",
+                name: "ProductBrands",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -16,11 +16,11 @@ namespace API.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductBrand", x => x.Id);
+                    table.PrimaryKey("PK_ProductBrands", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductType",
+                name: "ProductTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -29,7 +29,7 @@ namespace API.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductType", x => x.Id);
+                    table.PrimaryKey("PK_ProductTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -40,7 +40,7 @@ namespace API.Infrastructure.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: true),
+                    Price = table.Column<int>(nullable: true),
                     PictureUrl = table.Column<string>(nullable: true),
                     ProductTypeId = table.Column<int>(nullable: true),
                     ProductBrandId = table.Column<int>(nullable: true)
@@ -49,15 +49,15 @@ namespace API.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_ProductBrand_ProductBrandId",
+                        name: "FK_Products_ProductBrands_ProductBrandId",
                         column: x => x.ProductBrandId,
-                        principalTable: "ProductBrand",
+                        principalTable: "ProductBrands",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Products_ProductType_ProductTypeId",
+                        name: "FK_Products_ProductTypes_ProductTypeId",
                         column: x => x.ProductTypeId,
-                        principalTable: "ProductType",
+                        principalTable: "ProductTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -79,10 +79,10 @@ namespace API.Infrastructure.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "ProductBrand");
+                name: "ProductBrands");
 
             migrationBuilder.DropTable(
-                name: "ProductType");
+                name: "ProductTypes");
         }
     }
 }

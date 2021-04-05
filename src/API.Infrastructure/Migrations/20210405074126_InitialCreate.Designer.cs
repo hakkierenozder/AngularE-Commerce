@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Infrastructure.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20210331072543_InitialCreate")]
+    [Migration("20210405074126_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,8 +33,8 @@ namespace API.Infrastructure.Migrations
                     b.Property<string>("PictureUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal?>("Price")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("Price")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("ProductBrandId")
                         .HasColumnType("INTEGER");
@@ -62,7 +62,7 @@ namespace API.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductBrand");
+                    b.ToTable("ProductBrands");
                 });
 
             modelBuilder.Entity("API.Core.DbModels.ProductType", b =>
@@ -76,7 +76,7 @@ namespace API.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductType");
+                    b.ToTable("ProductTypes");
                 });
 
             modelBuilder.Entity("API.Core.DbModels.Product", b =>
